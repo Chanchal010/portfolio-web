@@ -1,7 +1,7 @@
 # Chanchal Bag - Portfolio Website
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://chanchal-bag-portfolio.vercel.app)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/Chanchal010)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://portfolio-web-sepia-theta.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/Chanchal010/portfolio-web)
 
 A modern, responsive portfolio website showcasing my skills, projects, and services as a Full Stack Developer.
 
@@ -57,7 +57,7 @@ A modern, responsive portfolio website showcasing my skills, projects, and servi
 
 Simply open the `index.html` file in your web browser to view the portfolio locally. Alternatively, you can use a development server like Live Server in Visual Studio Code.
 
-To visit the live website, click here: [Visit Portfolio Website](https://chanchal-bag-portfolio.vercel.app)
+To visit the live website, click here: [Visit Portfolio Website](https://portfolio-web-sepia-theta.vercel.app)
 
 ## 📂 Projects
 
@@ -88,8 +88,8 @@ Services offered include:
 
 Feel free to reach out to me through:
 
-- **Email**: [chanchal.bag@example.com](mailto:chanchal.bag@example.com)
-- **Phone**: +91 1234567890
+- **Email**: [chanchal.bag@example.com](mailto:chanchalbag112@gmail.com)
+- **Phone**: +91 9749112684
 - **LinkedIn**: [Chanchal Bag](https://www.linkedin.com/in/chanchal-bag-web-developer/)
 - **GitHub**: [Chanchal010](https://github.com/Chanchal010)
 - **Discord**: [Discord Profile](https://discord.com/channels/@me)
