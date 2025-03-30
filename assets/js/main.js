@@ -1,8 +1,7 @@
-// Theme toggle functionality
+
 const themeButtons = document.querySelectorAll('.theme-btn');
 const htmlElement = document.documentElement;
 
-// Check for saved theme preference or use default
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     htmlElement.setAttribute('data-theme', savedTheme);
@@ -10,7 +9,6 @@ if (savedTheme) {
         btn.classList.toggle('active', btn.getAttribute('data-theme') === savedTheme);
     });
 } else {
-    // Check for system preference
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
 
@@ -27,31 +25,24 @@ if (savedTheme) {
     }
 }
 
-// Theme button click handler
 themeButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         const theme = btn.getAttribute('data-theme');
 
-        // Remove active class from all buttons
         themeButtons.forEach(b => b.classList.remove('active'));
 
-        // Add active class to clicked button
         btn.classList.add('active');
 
-        // Set theme
         if (theme === 'default') {
-            // Remove theme attribute to use system preference
             htmlElement.removeAttribute('data-theme');
             localStorage.removeItem('theme');
         } else {
-            // Set specific theme
             htmlElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
         }
     });
 });
 
-// Navbar scroll effect
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
@@ -61,7 +52,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Mobile menu toggle
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-menu');
 
@@ -77,7 +67,6 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Typing effect for hero description
 const typingElement = document.getElementById('typing-text');
 const typingTexts = ['Full Stack Developer', 'Frontend Developer', 'Backend Developer', 'UI/UX Enthusiast'];
 let typingIndex = 0;
@@ -100,20 +89,18 @@ function typeEffect() {
 
     if (!isDeleting && charIndex === currentText.length) {
         isDeleting = true;
-        typingDelay = 1000; // Pause at end of word
+        typingDelay = 1000; 
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         typingIndex = (typingIndex + 1) % typingTexts.length;
-        typingDelay = 500; // Pause before typing next word
+        typingDelay = 500; 
     }
 
     setTimeout(typeEffect, typingDelay);
 }
 
-// Start the typing effect when the page loads
 window.addEventListener('load', typeEffect);
 
-// Scroll animations
 const fadeElements = document.querySelectorAll('.fade-in');
 const showElement = () => {
     fadeElements.forEach(element => {
@@ -127,26 +114,20 @@ const showElement = () => {
     });
 };
 
-// Initial check for elements in view
 window.addEventListener('load', showElement);
 window.addEventListener('scroll', showElement);
 
-// Project filtering
 const projectFilters = document.querySelectorAll('.project-filter');
 const projectCards = document.querySelectorAll('.project-card');
 
 projectFilters.forEach(filter => {
     filter.addEventListener('click', () => {
-        // Remove active class from all filters
         projectFilters.forEach(f => f.classList.remove('active'));
 
-        // Add active class to clicked filter
         filter.classList.add('active');
 
-        // Get filter value
         const filterValue = filter.getAttribute('data-filter');
 
-        // Filter projects
         projectCards.forEach(card => {
             if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                 card.style.display = 'block';
@@ -157,7 +138,6 @@ projectFilters.forEach(filter => {
     });
 });
 
-// Testimonial slider
 const testimonialSlider = document.querySelector('.testimonials-slider');
 const testimonialDots = document.querySelectorAll('.testimonial-dot');
 const prevBtn = document.querySelector('.prev-testimonial');
@@ -166,29 +146,24 @@ let currentSlide = 0;
 const slideWidth = 100;
 const slideCount = document.querySelectorAll('.testimonial').length;
 
-// Update slider position
 const updateSlider = () => {
     testimonialSlider.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
 
-    // Update dots
+    
     testimonialDots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentSlide);
     });
 };
-
-// Next slide
 const nextSlide = () => {
     currentSlide = (currentSlide + 1) % slideCount;
     updateSlider();
 };
 
-// Previous slide
 const prevSlide = () => {
     currentSlide = (currentSlide - 1 + slideCount) % slideCount;
     updateSlider();
 };
 
-// Event listeners for dots
 testimonialDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
         currentSlide = index;
@@ -196,14 +171,11 @@ testimonialDots.forEach((dot, index) => {
     });
 });
 
-// Event listeners for arrows
 nextBtn.addEventListener('click', nextSlide);
 prevBtn.addEventListener('click', prevSlide);
 
-// Automatic slide change
 let slideInterval = setInterval(nextSlide, 5000);
 
-// Pause on hover
 testimonialSlider.addEventListener('mouseenter', () => {
     clearInterval(slideInterval);
 });
@@ -212,7 +184,6 @@ testimonialSlider.addEventListener('mouseleave', () => {
     slideInterval = setInterval(nextSlide, 5000);
 });
 
-// Form validation and submission
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
 const formPopup = document.getElementById('form-popup');
@@ -236,13 +207,11 @@ const popupFields = {
     message: document.getElementById('popup-message')
 };
 
-// Validate email format
 const validateEmail = (email) => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 };
 
-// Validate on input change
 Object.keys(formInputs).forEach(key => {
     formInputs[key].addEventListener('input', () => {
         if (key === 'email') {
@@ -261,11 +230,9 @@ Object.keys(formInputs).forEach(key => {
     });
 });
 
-// Form submission
 contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // Check for form validity
     let isValid = true;
     
     Object.keys(formInputs).forEach(key => {
@@ -281,28 +248,20 @@ contactForm.addEventListener('submit', function(e) {
     }
     
     if (isValid) {
-        // In a real application, you would send the form data to a server
-        // For demo purposes, we'll show a success message and popup
-        
-        // Populate popup with form data
         Object.keys(popupFields).forEach(key => {
             popupFields[key].textContent = formInputs[key].value;
         });
         
-        // Show popup
         formPopup.classList.add('active');
         
-        // Reset form
         contactForm.reset();
     }
 });
 
-// Close popup
 closePopup.addEventListener('click', () => {
     formPopup.classList.remove('active');
 });
 
-// Close popup when clicking outside
 window.addEventListener('click', (e) => {
     if (e.target === formPopup) {
         formPopup.classList.remove('active');
